@@ -1,10 +1,11 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const photoRouter = require('./routes/photoRouter');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,5 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/photo', photoRouter);
 
 module.exports = app;
